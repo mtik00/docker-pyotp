@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import sys
-import pyotp
 import time
+
+import pyotp
 
 if len(sys.argv) < 2:
     print("Usage: pyotp <OTP secret>")
@@ -11,7 +12,5 @@ secret = sys.argv[-1]
 
 totp = pyotp.TOTP(secret)
 
-print("Current OTP:", totp.now())
-
 expires = int(30 - time.time() % 30)
-print(f" expires in: {expires}s")
+print(totp.now(), f"({expires}s)")
