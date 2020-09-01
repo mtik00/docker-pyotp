@@ -11,7 +11,7 @@ However, it's really meant for Docker.
 
 or better yet:
 
-    echo ${TOKEN} | xargs docker run mtik00/pyotp '{}'
+    echo ${TOKEN} | xargs docker run mtik00/pyotp
 
 # Arguments
 
