@@ -4,7 +4,7 @@ ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
 RUN apk update                      \
-&& pip install --no-cache-dir pyotp
+&& pip install --no-cache-dir pyotp pyperclip
 
 WORKDIR /usr/src/app
 COPY ./src .

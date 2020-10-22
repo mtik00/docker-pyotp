@@ -19,3 +19,4 @@ The script takes a couple of optional arguments.
 
 * `-c`/`--continuous`: Continuously output the current code.  Updates about once per second.
 * `-i`/`--interval`: The interval of the secret.  This is _probably_ 30, the default.
+* `--clipboard`: Copy the code to the clipboard when it changes
