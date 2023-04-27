@@ -48,19 +48,23 @@ def format_message(totp: str, expires: int, copied: bool = False):
 
 
 def continuous(secret: str, interval: int, clipboard: bool = False) -> None:
-    """Continuously display the current token."""
+    """Continuously display the **current** token.
+
+    NOTE: For security reasons, only the current TOTP will be displayed.  This
+    function will exit once the current token expires.
+    """
     totp, expires = now(secret, interval)
+    current_totp = totp
 
     if clipboard:
         pyperclip.copy(totp)
 
     try:
-        while True:
-            current_totp = totp
+        while totp == current_totp:
             print(format_message(totp, expires, clipboard), end="\r")
             time.sleep(1)
 
-            totp, expires = now(secret, interval)
+            current_totp, expires = now(secret, interval)
 
             # Only copy the _new_ code to the clipboard to prevent constant
             # clipboard overwrites
@@ -70,6 +74,9 @@ def continuous(secret: str, interval: int, clipboard: bool = False) -> None:
         # Print out the final code on a new line
         print()
         print(format_message(totp, expires, clipboard))
+
+    # Make sure the last `format_message` is displayed on screen
+    print()
 
 
 def single(secret: str, interval: int, clipboard: bool = False) -> None:
