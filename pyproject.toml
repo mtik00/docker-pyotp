@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "docker-pyotp"
+version = "0.1.0"
+description = ""
+authors = ["Tim McFadden <mtik00@users.noreply.github.com>"]
+readme = "README.md"
+packages = []
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyotp = "^2.8.0"
+pyperclip = "^1.8.2"
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.2.0"
+ipdb = "^0.13.13"
+black = "^23.3.0"
+flake8 = "^6.0.0"
+pre-commit = "^3.2.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
